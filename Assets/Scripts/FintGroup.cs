@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 
-public class FintGroup : MonoBehaviour
+public class FintGroup : BaseGroupe
 {
-    public bool isAlive = true;
+    
 
 
 
