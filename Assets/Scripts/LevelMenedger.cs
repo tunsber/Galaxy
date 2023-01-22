@@ -51,9 +51,20 @@ public class LevelMenedger : MonoBehaviour
 
     void CreatorGroup()
     {
-        GameObject newEnShip = Instantiate(enemShip);
-        newEnShip.transform.position = startEnPos;
-        currentGroup = newEnShip.GetComponent<FintGroup>();
-        count++;
+        if (groupTite[count] == GroupTite.shooting)
+        {
+
+        
+            GameObject newEnShip = Instantiate(enemShip);
+            newEnShip.transform.position = startEnPos;
+            currentGroup = newEnShip.GetComponent<FintGroup>();
+            count++;
+        }   else if (groupTite[count] == GroupTite.remp)
+            {
+                GameObject newEnShip = Instantiate(rempGroup);
+                newEnShip.transform.position = startEnPos;
+                currentGroup = newEnShip.GetComponent<RawGroup>();
+                count++;
+            }   
     }
 }
