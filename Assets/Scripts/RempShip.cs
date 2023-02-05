@@ -6,6 +6,8 @@ public class RempShip : MonoBehaviour
 {
     public Direction direction;
     private float speed = 0.5f;
+
+    private float health = 100.0f;
     private float halfWidth;
     private float halfHeight;
     public SpriteRenderer shipRenderer;
@@ -126,5 +128,24 @@ public class RempShip : MonoBehaviour
                         direction = Direction.right;
                     }
             }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collider) 
+    {
+        
+        GameObject azerObject = collider.gameObject;
+        Bullet bulletObject = azerObject.GetComponent<Bullet>();
+        if (bulletObject != null)
+        {
+            health -= bulletObject.damage;
+            if (health <= 0)
+            {
+                
+                Destroy(gameObject);
+            }
+            Destroy(azerObject);
+        }
+        
     }
 }

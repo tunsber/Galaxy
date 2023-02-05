@@ -20,6 +20,7 @@ public class SpaceShip : MonoBehaviour
     void Update()
     {
         float halfWidth = spriteRenderer.bounds.size.x / 2;
+        float halfHeight = spriteRenderer.bounds.size.y / 2;
 
         bool isKeyDown = Input.GetKey(KeyCode.A);
         if (isKeyDown == true)
@@ -67,6 +68,51 @@ public class SpaceShip : MonoBehaviour
 
         }   
 
+
+        isKeyDown = Input.GetKey(KeyCode.W);
+        if (isKeyDown == true)
+        {
+            Vector3 newPos = new Vector3
+            (   transform.position.x, 
+                transform.position.y + speede, 
+                0
+            );
+
+            Vector3 checkPos = new Vector3  
+            (   newPos.x, 
+                newPos.y + halfHeight, 
+                0
+            );
+
+            if (ScreenHelper.isPosOnScreen(checkPos))
+            {
+                transform.position = newPos;
+            }
+
+        }
+
+            isKeyDown = Input.GetKey(KeyCode.S);
+        if (isKeyDown == true)
+        {
+            Vector3 newPos = new Vector3
+            (   transform.position.x, 
+                transform.position.y - speede, 
+                0
+            );
+
+            Vector3 checkPos = new Vector3  
+            (   newPos.x, 
+                newPos.y - halfHeight, 
+                0
+            );
+
+            if (ScreenHelper.isPosOnScreen(checkPos))
+            {
+                transform.position = newPos;
+            }
+
+        }
+
             isKeyDown = Input.GetKeyDown(KeyCode.Space);
         if (isKeyDown == true)
         {
@@ -101,7 +147,17 @@ public class SpaceShip : MonoBehaviour
                 SceneManager.LoadSceneAsync(SceneIds.loseScene);
                 Destroy(gameObject);
             }
-        }
+        }   else 
+            {
+                RempShip ship = otherObject.GetComponent<RempShip>();
+
+                if (ship != null)
+                {
+                    Destroy(otherObject);
+                    SceneManager.LoadSceneAsync(SceneIds.loseScene);
+                    Destroy(gameObject);
+                }
+            }
     }
     
 

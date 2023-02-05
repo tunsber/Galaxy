@@ -10,7 +10,7 @@ public class LevelMenedger : MonoBehaviour
     public GameObject enemShip;
     public GameObject rempGroup;
 
-    private GroupTite[] groupTite = {  GroupTite.remp };
+    private GroupTite[] groupTite = {GroupTite.shooting, GroupTite.remp, GroupTite.shooting };
 
     Vector3 starPlPos = new Vector3(0, -3.5f, 0);
     Vector3 startEnPos = new Vector3(0, 2.5f, -1.5f);
